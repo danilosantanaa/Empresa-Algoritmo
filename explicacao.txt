@@ -1,0 +1,92 @@
+1998 09 10
+2022 01 14
+
+(1999 * 365 + 2000 * 365 + 2001 * 365 + ... + 2022 * 365) + Q
+
+10 = 31 dias
+11 = 30 dias 
+12 = 31 dias
+     ====
+      X = 62 dias 
+
+Como o mes 9 tem 30 eu faria
+	Y = 10 - 30 = 20 dias
+
+Q1)
+
+(1999 * 365 + 2000 * 365 + 2001 * 365 + ... + 2022 * 365) + Q + X + Y
+
+Q quantidade de dias bissexto	
+
+
+1998 09 10
+
+PARTE 1
+1999 ==== 2021 Quantidade de dias nesse intervalo
+
+PARTE 2
+10 ------- 12 Quantidade de dias nesse intervalo
+6884 dias
+2022
+
+PARTE 3
+Pegando a quantidade de dias do ano atual que ja passou
+
+PARTE 4
+Soma PARTE 1 + PARTE 2 + PARTE 3
+
+1998 10 10
+
+	82 dias
+
+
+Q2
+---
+A1: Ano informado pelo usuario
+M1: Mes informado pelo usuario
+D1: Dia Informado pelo Usuario
+
+A2 = 2022 Ano atual
+D = QTD_DIAS
+X = A2 - int(D / 365)
+Y = X * 365 + Q
+Q = Quantidade de anos bissexto do Intervalo de X até A2
+
+R = D - Y | Quantidade de dias que sobrou
+
+K = Quantidade de dias que ja passou do ano atual
+
+N = R - K Quantidade de mes para descobrir o mes que era 
+
+
+Considerando que N = 82 dias
+Logo fica
+
+dezembro = 31
+novembro = 30
+> outubro = 30
+
+82 - 31 > 0 ? True
+82 - 31 = 51
+
+51 - 30 > 0 ? True
+51 - 30 = 10
+
+10 - 30  > 0 ? False
+
+30 - 10 = 20
+
+Logo fica
+ Outubro dia 20
+
+
+
+
+
+
+
+
+
+
+
+
