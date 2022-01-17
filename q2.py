@@ -8,12 +8,8 @@ def isAnoBissexto(ano):
 
 # Funcao que retorna a quantidade de dias de acordo com o mes
 def qtdMesDia(mes, ano):
-    if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
-        return 31
-    elif mes == 4 or mes == 6 or mes == 9 or mes == 11:
-       return  30
-    else:
-        return 29 if isAnoBissexto(ano) else 28
+    tot_dia_mes = [31, (29 if isAnoBissexto(ano) else 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    return tot_dia_mes[mes - 1]
 
 # OK Função que tem como objetivo pegar a quantidade de dias dos anos que não tem 365 ou 366 dias 
 # Tal que mes < i <= 12
