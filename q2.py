@@ -1,6 +1,4 @@
 from datetime import date
-from math import ceil
-
 
 # Verificar se o ano é bissexto
 def isAnoBissexto(ano):
