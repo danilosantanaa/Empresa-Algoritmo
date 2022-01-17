@@ -39,8 +39,8 @@ def qtdDiaAnoQuebrado(ano, dia, mes, is_soma = False):
     if not is_soma and ano == date.today().year and mes == date.today().month:
         dia = date.today().day - dia
 
-    t = qtd_dias + ( dia if is_soma or ano == date.today().year else qtdMesDia(mes, ano) - dia )
-    return t
+   
+    return qtd_dias + ( dia if is_soma or ano == date.today().year else qtdMesDia(mes, ano) - dia )
 
 # Funcao que retorna a quantidade de dias
 def qtdDias(ano, mes, dia):
@@ -56,8 +56,8 @@ def qtdDias(ano, mes, dia):
     else:
         dias = qtdDiaAnoQuebrado(ano_atual, dia_atual, mes_atual, True) + qtdDiaAnoQuebrado(ano, dia, mes)
 
-    q = qtdDiaIntervalAnos(ano_atual, ano) + dias
-    return q
+    
+    return  qtdDiaIntervalAnos(ano_atual, ano) + dias
 
 ano_atual  = date.today().year
 mes_atual = date.today().month
@@ -99,7 +99,3 @@ while True:
 
 print('=' * 50)
 print(f'Convertendo a idade fica em: {qtdDias(ano, mes, dia)} dias de idade.')
-
-
-# print(qtdDiaAnoQuebrado(2021, 10, 10))
-

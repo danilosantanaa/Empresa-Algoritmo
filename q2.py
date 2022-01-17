@@ -1,4 +1,5 @@
 from datetime import date
+from math import ceil
 
 
 # Verificar se o ano é bissexto
@@ -29,8 +30,8 @@ def qtdDiaAnoQuebrado(ano, dia, mes, is_soma = False):
     if not is_soma and ano == date.today().year and mes == date.today().month:
         dia = date.today().day - dia
 
-    t = qtd_dias + ( dia if is_soma or ano == date.today().year else qtdMesDia(mes, ano) - dia )
-    return t
+     
+    return qtd_dias + ( dia if is_soma or ano == date.today().year else qtdMesDia(mes, ano) - dia )
 
 # OK Obtendo a quantidade de dias no intervalo tal que ano < i < 2022 para pegar a quantidade de dia inteira sem parte dos intervalo
 def qtdDiaIntervalAnos(ano_maior, ano_menor):
@@ -41,7 +42,7 @@ def qtdDiaIntervalAnos(ano_maior, ano_menor):
         if isAnoBissexto(i):
             qtd_dia_sobras += 1
     
-    return ( ano_maior - ano_menor - 1 ) * ( 365 if ano_maior != ano_menor else 0 ) + qtd_dia_sobras
+    return ( ano_maior - ano_menor) * ( 365 if ano_maior != ano_menor else 0 ) + qtd_dia_sobras
 
 
 # Funcao que obtem dia, mes e ano dados uma quantidade de dias
@@ -54,10 +55,10 @@ def getAnoMesDia(totDias):
     ano = ano_atual - int( totDias / 365 )
 
     # Obtendo a quantidade de dias do ano ate ano_atual.
-    qtd_dias_sobras = qtdDiaIntervalAnos(ano_atual, ano - 1)
+    qtd_dias_sobras = qtdDiaIntervalAnos(ano_atual, ano)
 
     # Obtendo os dias que sobrou
-    dias_sobras = ( totDias - qtd_dias_sobras ) + qtdDiaAnoQuebrado(ano_atual, dia_atual, mes_atual, True)
+    dias_sobras = ( totDias - qtd_dias_sobras ) - qtdDiaAnoQuebrado(ano_atual, dia_atual, mes_atual, True)
 
     # Descobrir o mes quando dias_sobras - QTD_DIA(MES) > 0
 
