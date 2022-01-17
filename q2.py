@@ -57,8 +57,8 @@ def getAnoMesDia(totDias):
     dias_sobras = ( totDias - qtd_dias_sobras ) - qtdDiaAnoQuebrado(ano_atual, dia_atual, mes_atual, True)
 
     # Descobrir o mes quando dias_sobras - QTD_DIA(MES) > 0
-
-    if ano != ano_atual and dias_sobras >= 0:
+    # Caso o ano descoberto seja diferente do ano atual
+    if ano - 1 != ano_atual and dias_sobras >= 0:
         mes_pos = 12
         ano -= 1
         while True:
@@ -69,7 +69,8 @@ def getAnoMesDia(totDias):
             mes_pos -= 1
         
         dias_sobras = qtdMesDia(mes_pos, ano) - dias_sobras
-        
+
+    # Caso seja o mesmo ano 
     else:
         mes_pos = 1
         dias_sobras *= (-1)
