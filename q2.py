@@ -48,7 +48,7 @@ def getAnoMesDia(totDias):
     dia_atual = date.today().day
 
     # Obtendo o ano inteiro se a quantidade de dias tem 2022 dias, ano sera 2017
-    ano = ano_atual - int( totDias / 365 )
+    ano = ano_atual - ( totDias // 365 )
 
     # Obtendo a quantidade de dias do ano ate ano_atual.
     qtd_dias_sobras = qtdDiaIntervalAnos(ano_atual, ano)
@@ -58,27 +58,31 @@ def getAnoMesDia(totDias):
 
     # Descobrir o mes quando dias_sobras - QTD_DIA(MES) > 0
 
-    if ano != ano_atual:
+    if ano != ano_atual and dias_sobras >= 0:
         mes_pos = 12
+        ano -= 1
         while True:
             if not ( mes_pos > 1 and  dias_sobras > qtdMesDia(mes_pos, ano) ):
                 break
 
             dias_sobras -= qtdMesDia(mes_pos, ano)
             mes_pos -= 1
+        
+        dias_sobras = qtdMesDia(mes_pos, ano) - dias_sobras
+        
     else:
         mes_pos = 1
-        aux = dias_sobras
+        dias_sobras *= (-1)
         while True:
-            if not ( mes_pos < 12 and aux > qtdMesDia(mes_pos, ano) ):
+            if not ( mes_pos < 12 and dias_sobras > qtdMesDia(mes_pos, ano) ):
                 break
-            dias_sobras += aux
-            aux -= qtdMesDia(mes_pos, ano)
+            dias_sobras -= qtdMesDia(mes_pos, ano)
+           
             mes_pos += 1
 
         
     
-    return f'{ ano }/{ mes_pos }/{ qtdMesDia(mes_pos, ano) - dias_sobras }'
+    return f'{ ano }/{ mes_pos }/{dias_sobras }'
 
 
 dias = int(input('Digite a quantidade de dias: '))
